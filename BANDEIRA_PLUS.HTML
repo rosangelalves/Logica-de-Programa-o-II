@@ -1,0 +1,57 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+	var tela = document.querySelector("canvas");
+	var pincel = tela.getContext("2d");
+
+	pincel.fillStyle = "green";
+	pincel.fillRect(0, 0, 600, 400);
+
+	//desenha o LOSANGO
+	pincel.fillStyle = "yellow";
+	pincel.beginPath();
+	pincel.moveTo(300, 50);
+	pincel.lineTo(50, 200);
+	pincel.lineTo(300, 350);
+	pincel.lineTo(550, 200);
+	pincel.fill();
+
+	pincel.fillStyle = "darkblue";
+	pincel.beginPath();
+	pincel.arc(300, 200, 100, 0, 2* 3.14);
+	pincel.fill();
+
+	//desenha a FAIXA BRANCA
+	pincel.fillStyle = "white";
+	pincel.beginPath();
+	pincel.fillRect(200, 187.5, 200, 25);
+	pincel.fill();
+
+	pincel.fillStyle = "black";
+	pincel.font = "16px Arial";
+	pincel.fillText("ORDEM E PROGRESSO", 210, 205);
+
+	//função para desenha estrela
+	function desenhaEstrela(evento){
+		var x = evento.pageX - tela.offsetLeft;
+		var y = evento.pageY - tela.offsetTop;
+
+		pincel.beginPath();
+		pincel.fillStyle = "white";
+		pincel.moveTo(x, y-5);
+		pincel.lineTo(x-1, y-1);
+		pincel.lineTo(x-5, y-1);
+		pincel.lineTo(x-2, y+1);
+		pincel.lineTo(x-3, y+5);
+		pincel.lineTo(x, y+3);
+		pincel.lineTo(x+3, y+5);
+		pincel.lineTo(x+2, y+1);
+		pincel.lineTo(x+5, y-1);
+		pincel.lineTo(x+1, y-1);
+		pincel.fill();
+	}
+	
+	tela.onclick = desenhaEstrela;
+
+</script>
